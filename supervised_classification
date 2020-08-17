@@ -1,0 +1,38 @@
+library(class)
+table(signs$sign_type)
+aggregate(r10 ~ sign_type, data = signs, mean)
+head(next_sign)
+sign_types <- signs$sign_type
+knn(train = signs[-1], test = next_sign, cl = sign_types)
+
+sign_types <- signs$sign_type
+signs_pred <- knn(train = signs[-1], test = test_signs[-1], cl = sign_types)
+
+# Create a confusion matrix of the predicted versus actual values
+signs_actual <- test_signs$sign_type
+table(signs_pred,signs_actual)
+mean(signs_actual == signs_pred)
+```
+head(signs)
+   sign_type  r1  g1  b1  r2  g2  b2  r3  g3  b3  r4  g4  b4  r5  g5  b5  r6
+1 pedestrian 155 228 251 135 188 101 156 227 245 145 211 228 166 233 245 212
+2 pedestrian 142 217 242 166 204  44 142 217 242 147 219 242 164 228 229  84
+3 pedestrian  57  54  50 187 201  68  51  51  45  59  62  65 156 171  50 254
+4 pedestrian  22  35  41 171 178  26  19  27  29  19  27  29  42  37   3 217
+5 pedestrian 169 179 170 231 254  27  97 107  99 123 147 152 221 236 117 205
+6 pedestrian  75  67  60 131  89  53 214 144  75 156 169 190  67  50  36  37
+   g6 b6  r7  g7 b7  r8  g8  b8  r9  g9  b9 r10 g10 b10 r11 g11 b11 r12 g12 b12
+1 254 52 212 254 11 188 229 117 170 216 120 211 254   3 212 254  19 172 235 244
+2 116 17 217 254 26 155 203 128 213 253  51 217 255  21 217 255  21 158 225 237
+3 255 36 211 226 70  78  73  64 220 234  59 254 255  51 253 255  44  66  68  68
+4 228 19 221 235 20 181 183  73 237 234  44 251 254   2 235 243  12  19  27  29
+5 225 80 235 254 60  90 110   9 216 236  66 229 255  12 235 254  60 163 168 152
+6  36 42  44  42 44 192 131  73 123  74  22  36  34  37  44  42  44 197 114  21
+  r13 g13 b13 r14 g14 b14 r15 g15 b15 r16 g16 b16
+1 172 235 244 172 228 235 177 235 244  22  52  53
+2 164 227 237 182 228 143 171 228 196 164 227 237
+3  69  65  59  76  84  22  82  93  17  58  60  60
+4  20  29  34  64  61   4 211 222  78  19  27  29
+5 124 117  91 188 205  78 125 147  20 160 183 187
+6 171 102  26 197 114  21 123  74  22 180 107  26
+
